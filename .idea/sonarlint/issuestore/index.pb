@@ -1,0 +1,11 @@
+
+a
+1app/src/main/java/com/example/bmi/MainActivity.kt,e/f/ef8c94dc351bd5f8868d46fffe93c66a0e99e51d
+^
+.app/src/main/java/com/example/bmi/Logic/Bmi.kt,c/3/c37438ef4e14039f0a546badeb898077daba447f
+e
+5app/src/main/java/com/example/bmi/Logic/BmiForKgCm.kt,c/4/c4477c2a88887d49763a811b2780a63de119da2d
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
