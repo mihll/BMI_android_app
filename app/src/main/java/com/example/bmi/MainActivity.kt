@@ -50,7 +50,20 @@ class MainActivity : AppCompatActivity() {
         if(convertedMass != -1 && convertedHeight != -1) {
             val counter = BmiForKgCm(convertedMass, convertedHeight)
             val roundedBmi = round(counter.countBmi() * 100) / 100
-            BMIResultText.text = roundedBmi.toString()
+            BMIResultNumber.text = roundedBmi.toString()
+            when{
+                roundedBmi < 15.0 -> BMIResultDescription.text = "Very severely underweight"
+                roundedBmi < 16.0 -> BMIResultDescription.text = "Severely underweight"
+                roundedBmi < 18.5 -> BMIResultDescription.text = "Underweight"
+                roundedBmi < 25.0 -> BMIResultDescription.text = "Normal"
+                roundedBmi < 30.0 -> BMIResultDescription.text = "Overweight"
+                roundedBmi < 35.0 -> BMIResultDescription.text = "Moderately obese"
+                roundedBmi < 40.0 -> BMIResultDescription.text = "Severely obese"
+                roundedBmi < 45.0 -> BMIResultDescription.text = "Very severely obese"
+                roundedBmi < 50.0 -> BMIResultDescription.text = "Morbidly Obese"
+                roundedBmi < 60.0 -> BMIResultDescription.text = "Super Obese"
+                else -> BMIResultDescription.text = "Hyper Obese"
+            }
         }
     }
 }
