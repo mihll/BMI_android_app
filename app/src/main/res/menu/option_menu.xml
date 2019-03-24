@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/aboutMe"
+          android:title="About me"/>
+    <item
+            android:id="@+id/changeUnits"
+            android:title="Imperial units"
+            android:checkable="true"
+            android:saveEnabled="true"/>
+</menu>
