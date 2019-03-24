@@ -15,37 +15,42 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun checkMass(enteredMass : String) : Boolean{
+    private fun checkAndConvertMass(enteredMass : String) : Int{
         if(enteredMass == ""){
             massTextField.error = "Please enter mass"
-            return false
-        } else if (enteredMass.toInt() <= 35){
-            massTextField.error = "Mass has to above 35 kg"
-            return false
-        } else return true
+            return -1
+        } else{
+            val massInt = enteredMass.toInt()
+            if (massInt <= 35){
+                massTextField.error = "Mass has to above 35 kg"
+                return -1
+            } else return massInt
+        }
     }
 
-    fun checkHeight(enteredHeight : String) : Boolean{
+    private fun checkAndConvertHeight(enteredHeight : String) : Int{
         if(enteredHeight == ""){
             heightTextField.error = "Please enter height"
-            return false
-        } else if (enteredHeight.toInt() <= 110){
-            heightTextField.error = "Height has to above 110 cm"
-            return false
-        } else return true
+            return -1
+        }else {
+            val heightInt = enteredHeight.toInt()
+            if(heightInt <= 110){
+                heightTextField.error = "Height has to above 110 cm"
+                return -1
+            } else return heightInt
+        }
     }
 
 
     fun onButtonClick(v: View){
         val enteredMass = massTextField.text.toString()
         val enteredHeight = heightTextField.text.toString()
-
-        if(checkMass(enteredMass)){
-            if (checkHeight(enteredHeight)){
-                val counter = BmiForKgCm(enteredMass.toInt(), enteredHeight.toInt())
-                var roundedBmi = round(counter.countBmi() * 100) / 100
-                BMIResultText.text = roundedBmi.toString();
-            }
-        }else checkHeight(enteredHeight)
+        val convertedMass = checkAndConvertMass(enteredMass)
+        val convertedHeight = checkAndConvertHeight(enteredHeight)
+        if(convertedMass != -1 && convertedHeight != -1) {
+            val counter = BmiForKgCm(convertedMass, convertedHeight)
+            val roundedBmi = round(counter.countBmi() * 100) / 100
+            BMIResultText.text = roundedBmi.toString()
+        }
     }
 }
