@@ -4,7 +4,5 @@
           android:title="About me"/>
     <item
             android:id="@+id/changeUnits"
-            android:title="Imperial units"
-            android:checkable="true"
-            android:saveEnabled="true"/>
+            android:title="Change units"/>
 </menu>

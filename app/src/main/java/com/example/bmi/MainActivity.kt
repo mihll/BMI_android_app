@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             R.id.aboutMe -> {}
             R.id.changeUnits -> {
                 this.currentUnit = !currentUnit
-                item.isChecked = currentUnit
                 unitsChanged()
                 clearTextViews()
             }

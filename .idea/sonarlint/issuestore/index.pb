@@ -19,3 +19,5 @@ U
 %app/src/main/res/menu/option_menu.xml,8/b/8ba706e16cf91d98db65db57d5400c11f0517287
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+e
+5app/src/main/java/com/example/bmi/Logic/BmiForLbIn.kt,7/9/79a9e7d79825481cd55c5801549dc67a5892330c
