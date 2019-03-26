@@ -1,9 +1,9 @@
 package com.example.bmi.Logic
 
-class BmiForKgCm : Bmi {
+class BmiForLbIn : Bmi {
 
     override fun countBmi(mass: Int, height: Int): Double {
-        val bmi = mass*10000.0 / (height*height)
+        val bmi = mass * 703.0 / (height*height)
         return bmi
     }
 }
