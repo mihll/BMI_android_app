@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun unitsChanged(){
+        infoButton.visibility = View.INVISIBLE
         if(currentUnit){
             currentCounter = BmiForLbIn()
             massTextFieldDesc.text = "Mass [lb]"
@@ -123,8 +124,9 @@ class MainActivity : AppCompatActivity() {
     private fun updateResult(roundedBmi: String, bmiDescp: String){
         BMIResultNumber.text = roundedBmi
         BMIResultDescription.text = bmiDescp
+        infoButton.visibility = View.VISIBLE
         when (bmiDescp) {
-            "Severely underweight" -> BMIResultNumber.setTextColor(Color.parseColor("#3366CC"))
+            "Severely underweight" ->BMIResultNumber.setTextColor(Color.parseColor("#3366CC"))
             "Underweight" -> BMIResultNumber.setTextColor(Color.parseColor("#00A693"))
             "Normal" -> BMIResultNumber.setTextColor(Color.parseColor("#3AC43D"))
             "Overweight" -> BMIResultNumber.setTextColor(Color.parseColor("#E07C2A"))
@@ -133,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun onButtonClick(v: View){
+    fun onCountButtonClick(v: View){
         val enteredMass = massTextField.text.toString()
         val enteredHeight = heightTextField.text.toString()
         val convertedMass = checkAndConvertMass(enteredMass)
