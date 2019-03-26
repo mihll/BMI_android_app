@@ -1,5 +1,6 @@
 package com.example.bmi
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,14 +33,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
-            R.id.aboutMe -> {}
+            R.id.aboutMe -> {
+                startActivity(Intent(this, AboutMeActivity::class.java))
+                return true
+            }
             R.id.changeUnits -> {
                 this.currentUnit = !currentUnit
                 unitsChanged()
                 clearTextViews()
+                return true
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
