@@ -9,13 +9,20 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AboutMeActivity"
-                  android:label="About me"
+        <activity android:name=".InfoActivity"
+                  android:label="@string/bmi_info_activityLabel"
                   android:parentActivityName=".MainActivity"
                   android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".MainActivity"
-        android:launchMode="singleTop">
+        <activity
+                android:name=".AboutMeActivity"
+                android:label="@string/bmi_aboutMe_activityLabel"
+                android:parentActivityName=".MainActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".MainActivity"
+                android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

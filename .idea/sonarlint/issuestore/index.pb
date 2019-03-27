@@ -21,3 +21,9 @@ S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 e
 5app/src/main/java/com/example/bmi/Logic/BmiForLbIn.kt,7/9/79a9e7d79825481cd55c5801549dc67a5892330c
+]
+-app/src/main/res/layout/activity_about_me.xml,8/8/881162ea8c4b52935f83f69ce33471cddfa58080
+d
+4app/src/main/java/com/example/bmi/AboutMeActivity.kt,f/b/fbaff2baa3f9b391b9c77251d344ac0b63d006cf
+a
+1app/src/main/java/com/example/bmi/InfoActivity.kt,d/e/defb0a144c63b2f37659a44aae1d1ccefe6a5f04

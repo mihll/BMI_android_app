@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bmi_margin_sides">8dp</dimen>
+    <dimen name="bmi_marginTop_field_header">16dp</dimen>
+    <dimen name="bmi_marginBottom_count_button">16dp</dimen>
+    <dimen name="bmi_marginBottom_infoButton">16dp</dimen>
+    <dimen name="bmi_marginTop_infoButton">16dp</dimen>
+</resources>

@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">BMI</string>
+    <string name="bmi_main_mass_kg">Mass [kg]</string>
+    <string name="bmi_main_height_cm">Height [cm]</string>
+    <string name="bmi_main_count">Count</string>
+    <string name="bmi_bmi_number_key">BMI_NUMBER</string>
+    <string name="bmi_bmi_description_key">BMI_DESCRIPTION</string>
+    <string name="bmi_current_unit_key">CURRENT_UNIT</string>
+    <string name="bmi_main_mass_lb">Mass [lb]</string>
+    <string name="bmi_main_height_in">Height [in]</string>
+    <string name="bmi_main_noEnteredMassError">Please enter mass</string>
+    <string name="bmi_main_incorrectNumberError">Incorrect number!</string>
+    <string name="bmi_main_imperial_massNotInRangeError">Mass has to be in range 90–350 lb</string>
+    <string name="bmi_main_metric_massNotInRangeError">Mass has to be in range 40–250 kg</string>
+    <string name="bmi_main_noEnteredHeightError">Please enter height</string>
+    <string name="bmi_main_imperial_heightNotInRangeError">Height has to be in range 50–100 in</string>
+    <string name="bmi_main_metric_heightNotInRangeError">Height has to be in range 130–250 cm</string>
+    <string name="bmi_underweight">Underweight</string>
+    <string name="bmi_normal">Normal</string>
+    <string name="bmi_overweight">Overweight</string>
+    <string name="bmi_obesity">Obesity</string>
+    <string name="bmi_morbidObesity">Morbid obesity</string>
+    <string name="bmi_about_title">What is BMI?</string>
+    <string name="bmi_about_description">The body mass index (BMI) or Quetelet index is a value derived from the mass
+        (weight) and height of an individual. The BMI is defined as the body mass divided by the square of the body
+        height, and is universally expressed in units of kg/m2, resulting from mass in kilograms and height in metres.
+    </string>
+    <string name="bmi_info_activityLabel">Info</string>
+    <string name="bmi_aboutMe_activityLabel">About me</string>
+    <string name="bmi_info_description_underweight">%1$s: \nA BMI of less than 18.50 indicates that you are underweight, so you may
+        need to put on some weight. You are recommended to ask your doctor or a dietitian for advice.
+    </string>
+    <string name="bmi_info_description_normal">%1$s: \nA BMI of 18.50-24.99 indicates that you are at a healthy weight for your
+        height. By maintaining a healthy weight, you lower your risk of developing serious health problems.
+    </string>
+    <string name="bmi_info_description_overweight">%1$s: \nA BMI of 25-29.99 indicates that you are slightly overweight. You
+        may be advised to lose some weight for health reasons. You are recommended to talk to your doctor or a dietitian
+        for advice.
+    </string>
+    <string name="bmi_info_description_obesity">%1$s: \nA BMI of over 30 indicates that you are heavily overweight. Your health
+        may be at risk if you do not lose weight. You are recommended to talk to your doctor or a dietitian for advice.
+    </string>
+    <string name="bmi_info_description_morbidObesity">%1$s: \nA BMI of over 40 indicates that you are morbidly overweight. Your
+        health is certainly at risk if you do not lose weight. You are recommended to talk to your doctor immediately.
+    </string>
+    <string name="bmi_actionBarMenu_aboutMe">About me</string>
+    <string name="bmi_actionBarMenu_changeUnits">Change units</string>
 </resources>

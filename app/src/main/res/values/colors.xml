@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="lapisLazuli">#3366CC</color>
+    <color name="verdigris">#00A693</color>
+    <color name="peridot">#E9DF00</color>
+    <color name="vividTangelo">#E07C2A</color>
+    <color name="pompeianRed">#B80000</color>
 </resources>

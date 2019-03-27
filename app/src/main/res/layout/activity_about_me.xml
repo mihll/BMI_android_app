@@ -2,28 +2,27 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".AboutMeActivity" android:orientation="vertical">
 
     <ImageView
-            android:src="@drawable/depositphotos_114697048_stock_illustration_bmi_body_mass_index_word"
+            android:src="@drawable/bmi_logo"
             android:layout_width="match_parent"
-            android:layout_height="187dp" android:id="@+id/imageView2" android:scaleType="centerCrop"/>
+            android:layout_height="187dp" android:id="@+id/aboutBannerImage" android:scaleType="centerCrop"/>
     <TextView
-            android:text="What is BMI?"
+            android:text="@string/bmi_about_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView"
+            android:layout_height="wrap_content" android:id="@+id/aboutTitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" android:textAlignment="center"/>
     <TextView
-            android:text="The body mass index (BMI) or Quetelet index is a value derived from the mass (weight) and height of an individual. The BMI is defined as the body mass divided by the square of the body height, and is universally expressed in units of kg/m2, resulting from mass in kilograms and height in metres."
+            android:text="@string/bmi_about_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView2"
+            android:layout_height="wrap_content" android:id="@+id/aboutDesc"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textAlignment="center"
             android:textSize="18sp"/>
     <ImageView
             android:src="@drawable/bmi_chart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/imageView6"/>
+            android:layout_height="wrap_content" android:id="@+id/aboutGraph"/>
 </LinearLayout>
