@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                 massTextField.error = getString(R.string.bmi_main_incorrectNumberError)
                 return -1
             }
-            if (massInt < 90 || massInt > 350){
+            if (massInt < 90 || massInt > 999){
                 massTextField.error = getString(R.string.bmi_main_imperial_massNotInRangeError)
                 return -1
             } else return massInt
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                 massTextField.error = getString(R.string.bmi_main_incorrectNumberError)
                 return -1
             }
-            if (massInt < 40 || massInt > 250){
+            if (massInt < 40 || massInt > 600){
                 massTextField.error = getString(R.string.bmi_main_metric_massNotInRangeError)
                 return -1
             }

@@ -10,8 +10,8 @@
     <string name="bmi_main_height_in">Height [in]</string>
     <string name="bmi_main_noEnteredMassError">Please enter mass</string>
     <string name="bmi_main_incorrectNumberError">Incorrect number!</string>
-    <string name="bmi_main_imperial_massNotInRangeError">Mass has to be in range 90–350 lb</string>
-    <string name="bmi_main_metric_massNotInRangeError">Mass has to be in range 40–250 kg</string>
+    <string name="bmi_main_imperial_massNotInRangeError">Mass has to be in range 90–999 lb</string>
+    <string name="bmi_main_metric_massNotInRangeError">Mass has to be in range 40–600 kg</string>
     <string name="bmi_main_noEnteredHeightError">Please enter height</string>
     <string name="bmi_main_imperial_heightNotInRangeError">Height has to be in range 50–100 in</string>
     <string name="bmi_main_metric_heightNotInRangeError">Height has to be in range 130–250 cm</string>

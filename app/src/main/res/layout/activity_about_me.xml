@@ -6,23 +6,30 @@
         android:layout_height="wrap_content"
         tools:context=".AboutMeActivity" android:orientation="vertical">
 
-    <ImageView
-            android:src="@drawable/bmi_logo"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="187dp" android:id="@+id/aboutBannerImage" android:scaleType="centerCrop"/>
-    <TextView
-            android:text="@string/bmi_about_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/aboutTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" android:textAlignment="center"/>
-    <TextView
-            android:text="@string/bmi_about_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/aboutDesc"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textAlignment="center"
-            android:textSize="18sp"/>
-    <ImageView
-            android:src="@drawable/bmi_chart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/aboutGraph"/>
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <ImageView
+                    android:src="@drawable/bmi_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="187dp" android:id="@+id/aboutBannerImage" android:scaleType="centerCrop"/>
+            <TextView
+                    android:text="@string/bmi_about_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/aboutTitle"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" android:textAlignment="center"/>
+            <TextView
+                    android:text="@string/bmi_about_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/aboutDesc"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textAlignment="center"
+                    android:textSize="18sp"/>
+            <ImageView
+                    android:src="@drawable/bmi_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/aboutGraph"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

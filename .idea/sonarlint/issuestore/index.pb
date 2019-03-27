@@ -27,3 +27,13 @@ d
 4app/src/main/java/com/example/bmi/AboutMeActivity.kt,f/b/fbaff2baa3f9b391b9c77251d344ac0b63d006cf
 a
 1app/src/main/java/com/example/bmi/InfoActivity.kt,d/e/defb0a144c63b2f37659a44aae1d1ccefe6a5f04
+Y
+)app/src/main/res/layout/activity_info.xml,3/d/3d0fed3d7a8e8b15d9b91609aaf08d1a8fb212d9
+R
+"app/src/main/res/values/colors.xml,9/6/969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
+R
+"app/src/main/res/values/dimens.xml,c/3/c3c1811dec2dbad2deeafb9aad505ca9631da740
+S
+#app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
+d
+4app/src/test/java/com/example/bmi/ExampleUnitTest.kt,2/3/235cf683f9fd91f0cc3618b582c44b8a1a5a3ec7

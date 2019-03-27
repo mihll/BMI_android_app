@@ -11,18 +11,17 @@
             android:theme="@style/AppTheme">
         <activity android:name=".InfoActivity"
                   android:label="@string/bmi_info_activityLabel"
-                  android:parentActivityName=".MainActivity"
-                  android:screenOrientation="portrait">
+                  android:parentActivityName=".MainActivity">
         </activity>
         <activity
                 android:name=".AboutMeActivity"
                 android:label="@string/bmi_aboutMe_activityLabel"
-                android:parentActivityName=".MainActivity"
-                android:screenOrientation="portrait">
+                android:parentActivityName=".MainActivity">
         </activity>
         <activity
                 android:name=".MainActivity"
-                android:launchMode="singleTop">
+                android:launchMode="singleTop"
+                android:windowSoftInputMode="stateUnchanged">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
