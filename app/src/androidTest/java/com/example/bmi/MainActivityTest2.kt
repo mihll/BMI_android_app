@@ -27,67 +27,13 @@ class MainActivityTest2 {
 
     @Test
     fun mainActivityTest2() {
-        val textView = onView(
-            allOf(
-                withId(R.id.massTextFieldHeader), withText("Mass [kg]"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
+        val textView = onView(withId(R.id.massTextFieldHeader))
         textView.check(matches(isDisplayed()))
 
-        val textView2 = onView(
-            allOf(
-                withId(R.id.heightTextFieldHeader), withText("Height [cm]"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0
-                    ),
-                    3
-                ),
-                isDisplayed()
-            )
-        )
+        val textView2 = onView(withId(R.id.heightTextFieldHeader))
         textView2.check(matches(isDisplayed()))
 
-        val button = onView(
-            allOf(
-                withId(R.id.countButton),
-                childAtPosition(
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0
-                    ),
-                    7
-                ),
-                isDisplayed()
-            )
-        )
+        val button = onView(withId(R.id.countButton))
         button.check(matches(isDisplayed()))
-    }
-
-    private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
-
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("Child at position $position in parent ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
-            }
-        }
     }
 }

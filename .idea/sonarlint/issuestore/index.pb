@@ -37,3 +37,7 @@ S
 #app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
 d
 4app/src/test/java/com/example/bmi/ExampleUnitTest.kt,2/3/235cf683f9fd91f0cc3618b582c44b8a1a5a3ec7
+l
+<app/src/androidTest/java/com/example/bmi/MainActivityTest.kt,2/2/2286dc201c5adc0b2f0009ab171d312e4710541a
+m
+=app/src/androidTest/java/com/example/bmi/MainActivityTest2.kt,b/7/b72a2ce02d1b0d0f8c8da41b67ec81f1d32df62e

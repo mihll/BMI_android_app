@@ -58,13 +58,13 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         if (savedInstanceState != null) {
-            if (savedInstanceState.getString(getString(R.string.bmi_bmi_number_key)) != "") {
+            if (savedInstanceState.getString(getString(R.string.bmi_bmi_number_key)) != ""){
                 val savedBmiResult = savedInstanceState.getString(getString(R.string.bmi_bmi_number_key))!!
                 val savedBmiDescp = savedInstanceState.getString(getString(R.string.bmi_bmi_description_key))!!
-                currentUnit = savedInstanceState.getBoolean(getString(R.string.bmi_current_unit_key))
-                unitsChanged()
                 updateResult(savedBmiResult, savedBmiDescp)
             }
+            currentUnit = savedInstanceState.getBoolean(getString(R.string.bmi_current_unit_key))
+            unitsChanged()
             invalidateOptionsMenu()
         }
     }
