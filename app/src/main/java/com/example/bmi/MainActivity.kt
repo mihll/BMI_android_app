@@ -10,12 +10,16 @@ import androidx.core.content.ContextCompat
 import com.example.bmi.Logic.Bmi
 import com.example.bmi.Logic.BmiForKgCm
 import com.example.bmi.Logic.BmiForLbIn
-import kotlin.math.round
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val KEY_BMI_VALUE = "BMI_VALUE"
+        const val KEY_BMI_TYPE = "BMI_TYPE"
+        const val KEY_CURRENT_UNITS= "CURRENT_UNITS"
+    }
 
     private var currentUnit = false
     private var currentCounter : Bmi = BmiForKgCm()
@@ -50,20 +54,20 @@ class MainActivity : AppCompatActivity() {
     ///////////////////////////////////////////////////////////////////////////////////////
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putString(getString(R.string.bmi_bmi_number_key), BMIResultNumber.text.toString())
-        outState?.putString(getString(R.string.bmi_bmi_description_key), BMIResultDescription.text.toString())
-        outState?.putBoolean(getString(R.string.bmi_current_unit_key), currentUnit)
+        outState?.putString(KEY_BMI_VALUE, BMIResultNumber.text.toString())
+        outState?.putString(KEY_BMI_TYPE, BMIResultType.text.toString())
+        outState?.putBoolean(KEY_CURRENT_UNITS, currentUnit)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         if (savedInstanceState != null) {
-            if (savedInstanceState.getString(getString(R.string.bmi_bmi_number_key)) != ""){
-                val savedBmiResult = savedInstanceState.getString(getString(R.string.bmi_bmi_number_key))!!
-                val savedBmiDescp = savedInstanceState.getString(getString(R.string.bmi_bmi_description_key))!!
-                updateResult(savedBmiResult, savedBmiDescp)
+            if (savedInstanceState.getString(KEY_BMI_VALUE) != ""){
+                val savedBmiResult = savedInstanceState.getString(KEY_BMI_VALUE)!!
+                val savedBmiDescription = savedInstanceState.getString(KEY_BMI_TYPE)!!
+                updateResult(savedBmiResult.toDouble(), BmiCategories.valueOfCategoryBmi(resources,savedBmiDescription))
             }
-            currentUnit = savedInstanceState.getBoolean(getString(R.string.bmi_current_unit_key))
+            currentUnit = savedInstanceState.getBoolean(KEY_CURRENT_UNITS)
             unitsChanged()
             invalidateOptionsMenu()
         }
@@ -88,122 +92,107 @@ class MainActivity : AppCompatActivity() {
             heightTextField.text = null
             heightTextField.error = null
             BMIResultNumber.text = ""
-            BMIResultDescription.text = ""
+            BMIResultType.text = ""
     }
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    private fun checkAndConvertMass(enteredMass : String) : Int{
-        val massInt : Int
-        if(enteredMass == ""){
-            massTextField.error = getString(R.string.bmi_main_noEnteredMassError)
-            return -1
-        }else if (currentUnit){
-            try{
-                massInt = enteredMass.toInt()
-            } catch (e : Exception){
-                massTextField.error = getString(R.string.bmi_main_incorrectNumberError)
-                return -1
-            }
-            if (massInt < 90 || massInt > 999){
-                massTextField.error = getString(R.string.bmi_main_imperial_massNotInRangeError)
-                return -1
-            } else return massInt
-        } else {
-            try{
-                massInt = enteredMass.toInt()
-            } catch (e : Exception){
-                massTextField.error = getString(R.string.bmi_main_incorrectNumberError)
-                return -1
-            }
-            if (massInt < 40 || massInt > 600){
-                massTextField.error = getString(R.string.bmi_main_metric_massNotInRangeError)
-                return -1
-            }
-            return massInt
-        }
+    private fun checkUserInput() : Boolean {
+        var massCorrect = checkMassInput()
+        var heightCorrect = checkHeightInput()
+        if(massCorrect) massCorrect = checkMassRange()
+        if (heightCorrect) heightCorrect = checkHeightRange()
+        return massCorrect && heightCorrect
     }
 
-    private fun checkAndConvertHeight(enteredHeight : String) : Int {
-        val heightInt: Int
+    private fun checkMassInput() : Boolean {
+        val enteredMass = massTextField.text.toString()
+        if (enteredMass == "") {
+            massTextField.error = getString(R.string.bmi_main_noEnteredMassError)
+            return false
+        }
+        try {
+            enteredMass.toInt()
+        } catch (e: Exception) {
+            massTextField.error = getString(R.string.bmi_main_incorrectNumberError)
+            return false
+        }
+        return true
+    }
+
+    private fun checkMassRange() : Boolean {
+        val massInRange = currentCounter.checkMassRange(massTextField.text.toString().toInt())
+        if(!currentUnit){
+            if(!massInRange){
+                massTextField.error = getString(R.string.bmi_main_metric_massNotInRangeError,currentCounter.validMassRange.start,currentCounter.validMassRange.endInclusive)
+                return false
+            }
+        }else{
+            if(!massInRange){
+                massTextField.error = getString(R.string.bmi_main_imperial_massNotInRangeError,currentCounter.validMassRange.start,currentCounter.validMassRange.endInclusive)
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun checkHeightInput() : Boolean {
+        val enteredHeight = heightTextField.text.toString()
         if (enteredHeight == "") {
             heightTextField.error = getString(R.string.bmi_main_noEnteredHeightError)
-            return -1
-        } else if (currentUnit) {
-            try {
-                heightInt = enteredHeight.toInt()
-            } catch (e: Exception) {
-                heightTextField.error = getString(R.string.bmi_main_incorrectNumberError)
-                return -1
-            }
-            if (heightInt < 50 || heightInt > 100) {
-                heightTextField.error = getString(R.string.bmi_main_imperial_heightNotInRangeError)
-                return -1
-            } else return heightInt
-        } else {
-            try {
-                heightInt = enteredHeight.toInt()
-            } catch (e: Exception) {
-                heightTextField.error = getString(R.string.bmi_main_incorrectNumberError)
-                return -1
-            }
-            if (heightInt < 130 || heightInt > 250) {
-                heightTextField.error = getString(R.string.bmi_main_metric_heightNotInRangeError)
-                return -1
-            }
-            return heightInt
+            return false
         }
+        try {
+            enteredHeight.toInt()
+        } catch (e: Exception) {
+            heightTextField.error = getString(R.string.bmi_main_incorrectNumberError)
+            return false
+        }
+        return true
     }
+
+    private fun checkHeightRange() : Boolean {
+        val heightInRange = currentCounter.checkHeightRange(heightTextField.text.toString().toInt())
+        if(!currentUnit){
+            if(!heightInRange){
+                heightTextField.error = getString(R.string.bmi_main_metric_heightNotInRangeError,currentCounter.validHeightRange.start,currentCounter.validHeightRange.endInclusive)
+               return false
+            }
+        }else{
+            if(!heightInRange){
+                heightTextField.error = getString(R.string.bmi_main_imperial_heightNotInRangeError,currentCounter.validHeightRange.start,currentCounter.validHeightRange.endInclusive)
+                return false
+            }
+        }
+        return true
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     fun onCountButtonClick(v: View){
-        val enteredMass = massTextField.text.toString()
-        val enteredHeight = heightTextField.text.toString()
-        val convertedMass = checkAndConvertMass(enteredMass)
-        val convertedHeight = checkAndConvertHeight(enteredHeight)
-        if(convertedMass != -1 && convertedHeight != -1) {
-            val roundedBmi = round(currentCounter.countBmi(convertedMass,convertedHeight) * 100) / 100
-            when{
-                roundedBmi < 18.5 -> updateResult(roundedBmi.toString(),getString(R.string.bmi_underweight))
-                roundedBmi < 25.0 -> updateResult(roundedBmi.toString(),getString(R.string.bmi_normal))
-                roundedBmi < 30.0 -> updateResult(roundedBmi.toString(),getString(R.string.bmi_overweight))
-                roundedBmi < 40.0 -> updateResult(roundedBmi.toString(),getString(R.string.bmi_obesity))
-                else -> updateResult(roundedBmi.toString(),getString(R.string.bmi_morbidObesity))
+        if(checkUserInput()){
+            val mass = massTextField.text.toString().toInt()
+            val height = heightTextField.text.toString().toInt()
+            val countedBmi = currentCounter.countBmi(mass,height)
+            enumValues<BmiCategories>().forEach {
+                if(countedBmi <= it.getUpperRange()){
+                    updateResult(countedBmi,it)
+                    return
+                }
             }
         }
     }
 
-
-    private fun updateResult(roundedBmi: String, bmiDescp: String){
-        BMIResultNumber.text = roundedBmi
-        BMIResultDescription.text = bmiDescp
+    private fun updateResult(countedBmi: Double, category: BmiCategories){
+        BMIResultNumber.text = String.format("%.${2}f",countedBmi)
+        BMIResultType.text = category.getType(resources)
         infoButton.visibility = View.VISIBLE
-        when (bmiDescp) {
-            getString(R.string.bmi_underweight) -> {
-                BMIResultNumber.setTextColor(ContextCompat.getColor(this,R.color.lapisLazuli))
-                infoButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.lapisLazuli)
-            }
-            getString(R.string.bmi_normal) -> {
-                BMIResultNumber.setTextColor(ContextCompat.getColor(this,R.color.verdigris))
-                infoButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.verdigris)
-            }
-            getString(R.string.bmi_overweight) -> {
-                BMIResultNumber.setTextColor(ContextCompat.getColor(this,R.color.peridot))
-                infoButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.peridot)
-            }
-            getString(R.string.bmi_obesity) -> {
-                BMIResultNumber.setTextColor(ContextCompat.getColor(this,R.color.vividTangelo))
-                infoButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.vividTangelo)
-            }
-            getString(R.string.bmi_morbidObesity) -> {
-                BMIResultNumber.setTextColor(ContextCompat.getColor(this,R.color.pompeianRed))
-                infoButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.pompeianRed)
-            }
-        }
+        BMIResultNumber.setTextColor(category.getColor(resources))
+        infoButton.backgroundTintList = ContextCompat.getColorStateList(this,category.getColorID())
     }
 
     fun onInfoButtonClick(v: View){
         val infoIntent = Intent(this, InfoActivity::class.java)
-        infoIntent.putExtra(getString(R.string.bmi_bmi_number_key),BMIResultNumber.text.toString())
-        infoIntent.putExtra(getString(R.string.bmi_bmi_description_key),BMIResultDescription.text.toString())
+        infoIntent.putExtra(KEY_BMI_VALUE,BMIResultNumber.text.toString())
+        infoIntent.putExtra(KEY_BMI_TYPE,BMIResultType.text.toString())
         startActivity(infoIntent)
     }
 }

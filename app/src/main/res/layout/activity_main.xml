@@ -74,7 +74,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/BMIResultDescription"
+            android:id="@+id/BMIResultType"
             android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/BMIResultNumber"
             android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/bmi_margin_sides"
@@ -89,7 +89,7 @@
             app:layout_constraintStart_toEndOf="@+id/BMIResultNumber"
             android:layout_marginStart="@dimen/bmi_margin_sides"
             android:layout_marginBottom="@dimen/bmi_marginBottom_infoButton"
-            app:layout_constraintBottom_toTopOf="@+id/BMIResultDescription"
+            app:layout_constraintBottom_toTopOf="@+id/BMIResultType"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="@dimen/bmi_margin_sides"
             android:layout_marginTop="@dimen/bmi_marginTop_infoButton"
             app:layout_constraintTop_toBottomOf="@+id/heightTextField"
