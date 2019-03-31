@@ -5,4 +5,13 @@
     <dimen name="bmi_marginBottom_count_button">16dp</dimen>
     <dimen name="bmi_marginBottom_infoButton">16dp</dimen>
     <dimen name="bmi_marginTop_infoButton">16dp</dimen>
+    <dimen name="bmi_history_row_spacing">12dp</dimen>
+    <dimen name="bmi_about_me_desc_text_size">18sp</dimen>
+    <dimen name="bmi_entry_data_text_size">18sp</dimen>
+    <dimen name="bmi_entry_header_text_size">18sp</dimen>
+    <dimen name="bmi_info_bmi_value_text_size">48sp</dimen>
+    <dimen name="bmi_main_field_header_text_size">18sp</dimen>
+    <dimen name="bmi_main_bmi_result_text_size">48sp</dimen>
+    <dimen name="bmi_main_bmi_type_text_size">24sp</dimen>
+    <dimen name="bmi_main_count_button_text_size">24sp</dimen>
 </resources>

@@ -39,3 +39,13 @@ l
 <app/src/androidTest/java/com/example/bmi/MainActivityTest.kt,2/2/2286dc201c5adc0b2f0009ab171d312e4710541a
 m
 =app/src/androidTest/java/com/example/bmi/MainActivityTest2.kt,b/7/b72a2ce02d1b0d0f8c8da41b67ec81f1d32df62e
+b
+2app/src/main/java/com/example/bmi/BmiCategories.kt,c/e/ce8acb3d2fc43b57e4e7cddea289e14fcc15e7e8
+d
+4app/src/main/java/com/example/bmi/HistoryActivity.kt,1/0/10780559b808780ddeeb2ec85c32ef02c326d1db
+c
+3app/src/main/java/com/example/bmi/Logic/BmiEntry.kt,d/6/d63cf3b35ad672941e45271a6393d6c69ea37c36
+f
+6app/src/main/java/com/example/bmi/BmiEntriesAdapter.kt,c/9/c9e29758a0e918a68c78e4e5ab91a7b91c2227be
+e
+5app/src/main/java/com/example/bmi/SharedPreference.kt,8/d/8d5e86beae93bddcb5a996c9b1df7ba0adc9860a

@@ -5,7 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".AboutMeActivity" android:orientation="vertical">
-
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -25,7 +24,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/aboutDesc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textAlignment="center"
-                    android:textSize="18sp"/>
+                    android:textSize="@dimen/bmi_about_me_desc_text_size"/>
             <ImageView
                     android:src="@drawable/bmi_chart"
                     android:layout_width="match_parent"

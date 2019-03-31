@@ -17,13 +17,13 @@
             android:layout_height="wrap_content" android:id="@+id/BMIValueText" android:layout_marginTop="24dp"
             android:layout_below="@+id/infoBannerImage" android:layout_alignParentStart="true"
             android:layout_marginStart="24dp" android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="48sp"/>
+            android:textSize="@dimen/bmi_info_bmi_value_text_size"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/BMIDescText"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="24dp" android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_marginTop="24dp" android:layout_below="@+id/infoBannerImage"
-            android:layout_toEndOf="@+id/BMIValueText" android:layout_marginStart="24dp" android:textSize="18sp"
+            android:layout_toEndOf="@+id/BMIValueText" android:layout_marginStart="24dp" android:textSize="@dimen/bmi_about_me_desc_text_size"
     />
 </RelativeLayout>

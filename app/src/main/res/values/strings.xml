@@ -24,22 +24,38 @@
     </string>
     <string name="bmi_info_activityLabel">Info</string>
     <string name="bmi_aboutMe_activityLabel">About me</string>
-    <string name="bmi_info_description_underweight">Underweight: \nA BMI of under %2$s indicates that you are underweight, so you may
+    <string name="bmi_info_description_underweight">Underweight: \nA BMI of under %2$s indicates that you are
+        underweight, so you may
         need to put on some weight. You are recommended to ask your doctor or a dietitian for advice.
     </string>
-    <string name="bmi_info_description_normal">Normal: \nA BMI of %1$s-%2$s indicates that you are at a healthy weight for your
+    <string name="bmi_info_description_normal">Normal: \nA BMI of %1$s-%2$s indicates that you are at a healthy weight
+        for your
         height. By maintaining a healthy weight, you lower your risk of developing serious health problems.
     </string>
-    <string name="bmi_info_description_overweight">Overweight: \nA BMI of %1$s-%2$s indicates that you are slightly overweight. You
+    <string name="bmi_info_description_overweight">Overweight: \nA BMI of %1$s-%2$s indicates that you are slightly
+        overweight. You
         may be advised to lose some weight for health reasons. You are recommended to talk to your doctor or a dietitian
         for advice.
     </string>
-    <string name="bmi_info_description_obese">Obese: \nA BMI of %1$s-%2$s indicates that you are heavily overweight. Your health
+    <string name="bmi_info_description_obese">Obese: \nA BMI of %1$s-%2$s indicates that you are heavily overweight.
+        Your health
         may be at risk if you do not lose weight. You are recommended to talk to your doctor or a dietitian for advice.
     </string>
-    <string name="bmi_info_description_extremelyObese">Extremely Obese: \nA BMI of over %1$s indicates that you are morbidly overweight. Your
+    <string name="bmi_info_description_extremelyObese">Extremely Obese: \nA BMI of over %1$s indicates that you are
+        morbidly overweight. Your
         health is certainly at risk if you do not lose weight. You are recommended to talk to your doctor immediately.
     </string>
     <string name="bmi_actionBarMenu_aboutMe">About me</string>
     <string name="bmi_actionBarMenu_changeUnits">Change units</string>
+    <string name="bmi_actionBarMenu_history">History</string>
+    <string name="bmi_history_activityLabel">History</string>
+    <string name="bmi_pound_short_end">%1$s lb</string>
+    <string name="bmi_inch_short_end">%1$s in</string>
+    <string name="bmi_kilogram_short_end">%1$s kg</string>
+    <string name="bmi_centimeter_short_end">%1$s cm</string>
+    <string name="bmi_entry_bmi_value_header">BMI value:</string>
+    <string name="bmi_entry_mass_header">Mass:</string>
+    <string name="bmi_entry_height_header">Height:</string>
+    <string name="bmi_entry_date_header">Date:</string>
+
 </resources>

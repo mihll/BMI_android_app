@@ -8,9 +8,12 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.bmi.Logic.Bmi
+import com.example.bmi.Logic.BmiEntry
 import com.example.bmi.Logic.BmiForKgCm
 import com.example.bmi.Logic.BmiForLbIn
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,14 +22,25 @@ class MainActivity : AppCompatActivity() {
         const val KEY_BMI_VALUE = "BMI_VALUE"
         const val KEY_BMI_TYPE = "BMI_TYPE"
         const val KEY_CURRENT_UNITS= "CURRENT_UNITS"
+        const val KEY_HISTORY_LIST = "HISTORY_LIST"
     }
 
     private var currentUnit = false
     private var currentCounter : Bmi = BmiForKgCm()
+    private lateinit var sharedPref: SharedPreference
+    private var resultListEmpty = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        sharedPref = SharedPreference(this)
+
+        val entriesList = sharedPref.getValueList(KEY_HISTORY_LIST)
+        if (entriesList.isEmpty()) {
+            resultListEmpty = true
+            invalidateOptionsMenu()
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -36,10 +50,19 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu!!.getItem(1).isEnabled = !resultListEmpty
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.aboutMe -> {
                 startActivity(Intent(this, AboutMeActivity::class.java))
+                return true
+            }
+            R.id.history -> {
+                startActivity(Intent(this,HistoryActivity::class.java))
                 return true
             }
             R.id.changeUnits -> {
@@ -65,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             if (savedInstanceState.getString(KEY_BMI_VALUE) != ""){
                 val savedBmiResult = savedInstanceState.getString(KEY_BMI_VALUE)!!
                 val savedBmiDescription = savedInstanceState.getString(KEY_BMI_TYPE)!!
-                updateResult(savedBmiResult.toDouble(), BmiCategories.valueOfCategoryBmi(resources,savedBmiDescription))
+                updateResultView(String.format("%.${2}f",savedBmiResult.toDouble()), BmiCategories.valueOfCategoryBmi(resources,savedBmiDescription))
             }
             currentUnit = savedInstanceState.getBoolean(KEY_CURRENT_UNITS)
             unitsChanged()
@@ -172,27 +195,47 @@ class MainActivity : AppCompatActivity() {
             val mass = massTextField.text.toString().toInt()
             val height = heightTextField.text.toString().toInt()
             val countedBmi = currentCounter.countBmi(mass,height)
+            val roundedBmiString = String.format("%.${2}f",countedBmi)
             enumValues<BmiCategories>().forEach {
                 if(countedBmi <= it.getUpperRange()){
-                    updateResult(countedBmi,it)
+                    updateResultView(roundedBmiString,it)
+                    updateResultList(roundedBmiString,mass.toString(),height.toString(),it.getType(resources))
                     return
                 }
             }
         }
     }
 
-    private fun updateResult(countedBmi: Double, category: BmiCategories){
-        BMIResultNumber.text = String.format("%.${2}f",countedBmi)
+    private fun updateResultView(countedBmi: String, category: BmiCategories){
+        BMIResultNumber.text = countedBmi
         BMIResultType.text = category.getType(resources)
         infoButton.visibility = View.VISIBLE
         BMIResultNumber.setTextColor(category.getColor(resources))
         infoButton.backgroundTintList = ContextCompat.getColorStateList(this,category.getColorID())
     }
 
-    fun onInfoButtonClick(v: View){
+    private fun updateResultList(bmiValue: String, mass: String, height: String, type: String) {
+        val currentDate = Calendar.getInstance().time
+        val dateString = SimpleDateFormat("dd.MM.yyyy  HH:mm:ss", Locale.getDefault()).format(currentDate)
+        val bmiRecord = BmiEntry(bmiValue,mass,height,currentUnit,type,dateString)
+
+        val recordsList = sharedPref.getValueList(KEY_HISTORY_LIST)
+        if (recordsList.size < 10) {
+            recordsList.add(bmiRecord)
+            sharedPref.save(KEY_HISTORY_LIST, recordsList)
+        } else {
+            recordsList.removeAt(0)
+            recordsList.add(bmiRecord)
+            sharedPref.save(KEY_HISTORY_LIST, recordsList)
+        }
+        resultListEmpty = false
+        invalidateOptionsMenu()
+    }
+
+    fun onInfoButtonClick(v: View) {
         val infoIntent = Intent(this, InfoActivity::class.java)
-        infoIntent.putExtra(KEY_BMI_VALUE,BMIResultNumber.text.toString())
-        infoIntent.putExtra(KEY_BMI_TYPE,BMIResultType.text.toString())
+        infoIntent.putExtra(KEY_BMI_VALUE, BMIResultNumber.text.toString())
+        infoIntent.putExtra(KEY_BMI_TYPE, BMIResultType.text.toString())
         startActivity(infoIntent)
     }
 }
