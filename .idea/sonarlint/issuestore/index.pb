@@ -49,3 +49,7 @@ f
 6app/src/main/java/com/example/bmi/BmiEntriesAdapter.kt,c/9/c9e29758a0e918a68c78e4e5ab91a7b91c2227be
 e
 5app/src/main/java/com/example/bmi/SharedPreference.kt,8/d/8d5e86beae93bddcb5a996c9b1df7ba0adc9860a
+\
+,app/src/main/res/layout/activity_history.xml,f/5/f56e2717b8fd5ac152413108f0ea114b3e2d6abd
+Y
+)app/src/main/res/layout/bmi_entry_row.xml,5/c/5cdc414e1027a487fab4a15eeae4a86dac75e397

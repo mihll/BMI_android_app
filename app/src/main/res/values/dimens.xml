@@ -14,4 +14,5 @@
     <dimen name="bmi_main_bmi_result_text_size">48sp</dimen>
     <dimen name="bmi_main_bmi_type_text_size">24sp</dimen>
     <dimen name="bmi_main_count_button_text_size">24sp</dimen>
+    <dimen name="bmi_entry_spacing_from_value">32dp</dimen>
 </resources>
